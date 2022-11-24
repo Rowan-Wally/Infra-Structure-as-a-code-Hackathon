@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "ec88e73f-714f-4ba7-970e-d95dff45c51b",
+		"name": "NETBackup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17382897"
+	},
+	"item": [
+		{
+			"name": "token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"//pm.globals.set(\"token\", postman.getResponseHeader(\"X-Subject-Token\"));\r",
+							"pm.globals.set(\"token\",jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer KUdmPPcJtBVVCeVmrDK9tUkYDGF5rsC1rq_NuGHgglCHgee4PApCOXGrwA7hNYOetHQDI5XfzKHu31s3mNMS8gzBQ0ytjASL_TTGY9l_hjXRgDnJVC-H01OSSu2SVwcO-C9Sl4LoMQ_GrzPl8cMB8ZIV3ARv8Dfn5owxPwd0URV4q67xLMDYGelcykA6ZPji4FSfljsOiHKUzyUFTJNS3RFrLrFwEeEImqEVDM_Antt1j5YRlAKTZOwKUeWIRnXcu5GQ5AGVGnCooxbfA2YQoYwgmO_WHQBLShUe8Ti70QcPqTSby8NidtOYj5V2RbZpO0PpIB9wbWv2_7piuMcdFinpptjJ8fyRLzk-4H4HBKtYeJKe-OVNU0Z1vAwosnVtm-6n5nL3-E3IAHrxenDXCJE0_GcyTBNiKjyPQXhMd1uwXbLn_B0BJ-N5RP5N9uOyZu3KZH8o1KhbSvl7HSelLm6BLW-cL7XfMwn2p7u0IVTLDLdL9gXCo9jUi1nIGyN2",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "rowan.wally",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd!1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://backup1.cloudavenue.orange-business.com/NetBackupSelfServiceNetBackupPanels/Api/auth/token",
+					"protocol": "https",
+					"host": [
+						"backup1",
+						"cloudavenue",
+						"orange-business",
+						"com"
+					],
+					"path": [
+						"NetBackupSelfServiceNetBackupPanels",
+						"Api",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "protectionnnnns",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.globals.set(\"Id\",jsonData.data[0].Id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://backup1.cloudavenue.orange-business.com/NetBackupSelfServiceNetBackupPanels/Api/v6/machines/443/protection/levels",
+					"protocol": "https",
+					"host": [
+						"backup1",
+						"cloudavenue",
+						"orange-business",
+						"com"
+					],
+					"path": [
+						"NetBackupSelfServiceNetBackupPanels",
+						"Api",
+						"v6",
+						"machines",
+						"443",
+						"protection",
+						"levels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "backuppppp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ProtectionLevelId\": {{Id}},\n    \"Paths\": [\n        \"string\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://backup1.cloudavenue.orange-business.com/NetBackupSelfServiceNetBackupPanels/Api/v6/machines/445/protect",
+					"protocol": "https",
+					"host": [
+						"backup1",
+						"cloudavenue",
+						"orange-business",
+						"com"
+					],
+					"path": [
+						"NetBackupSelfServiceNetBackupPanels",
+						"Api",
+						"v6",
+						"machines",
+						"445",
+						"protect"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
