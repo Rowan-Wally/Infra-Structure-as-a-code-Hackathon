@@ -48,12 +48,12 @@
 						},
 						{
 							"key": "username",
-							"value": "rowan.wally",
+							"value": "",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "P@ssw0rd!1",
+							"value": "",
 							"type": "text"
 						}
 					]
